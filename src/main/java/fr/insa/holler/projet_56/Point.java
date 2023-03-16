@@ -10,7 +10,7 @@ package fr.insa.holler.projet_56;
  */
 public class Point {
     
-    // coucou
+    // coucou p
     //Attributs
     double px,py;
     int idCoin;
