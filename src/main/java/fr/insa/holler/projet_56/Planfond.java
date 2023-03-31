@@ -13,6 +13,9 @@ public class Planfond {
     //List listeCoins ; 
     //List listeRevetements ;
 
+    Planfond(int id) {
+        this.idPlafond = id ;
+    }
 /*  Méthodes :
     toString()
     surface()
