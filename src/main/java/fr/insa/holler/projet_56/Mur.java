@@ -10,13 +10,17 @@ package fr.insa.holler.projet_56;
  */
 public class Mur {
     //Attributs
-    int idMur;
+    int idMur,NbrePortes,NbreFenetres;
     Point fin,debut;
     
-    Mur(int id,Point p1,Point p2){
+    
+    Mur(int id,Point p1,Point p2,int p,int f){
     this.idMur=id;
     this.debut=p1;
-    this.fin=p2;}
+    this.fin=p2;
+    this.NbrePortes=p;
+    this.NbreFenetres=f;
+    }
     
     void afficher()
     {System.out.println("==== Mur =====");
@@ -32,6 +36,9 @@ public class Mur {
         double h;
         System.out.println("Quelle est la hauteur ? ");
         h=Lire.d();
+        if (this.NbrePortes==0 && this.NbreFenetres==0){ 
         return longueur()*h;
+        }
+        return h;
     }
 }
