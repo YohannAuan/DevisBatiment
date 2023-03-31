@@ -4,6 +4,9 @@
  */
 package fr.insa.holler.projet_56;
 // Bonjour c'est Totole
+
+import java.util.ArrayList;
+
 /**
  *
  * @author yohan
@@ -20,6 +23,8 @@ public class Mur {
     this.fin=p2;
     this.NbrePortes=p;
     this.NbreFenetres=f;
+    ArrayList <Revetement> listeRevetements;
+    listeRevetements = new ArrayList <Revetement> ();
     }
     
     void afficher()
@@ -32,13 +37,12 @@ public class Mur {
     double longueur(){
         return Math.sqrt((this.fin.px-this.debut.px)*(this.fin.px-this.debut.px)+(this.fin.py-this.debut.py)*(this.fin.py-this.debut.py));
     }
-    double surface(){
-        double h;
-        System.out.println("Quelle est la hauteur ? ");
-        h=Lire.d();
-        if (this.NbrePortes==0 && this.NbreFenetres==0){ 
-        return longueur()*h;
-        }
-        return h;
-    }
+   // double surface(){
+   //     double h;
+   //     System.out.println("Quelle est la hauteur ? ");
+   //     h=Lire.d();
+        
+   //     return longueur()*h-(this.NbreFenetres*this.SurfaceFenetre)-(this.NbrePortes*this.SurfacePortes);
+        
+   // }
 }
