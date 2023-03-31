@@ -10,8 +10,8 @@ package fr.insa.holler.projet_56;
  */
 public class Sol {
     int idSol ;
-    List listeCoins ;
-    List listeRevetements ;
+    // List listeCoins ;
+    // List listeRevetements ;
     
 /*  Méthodes :
     afficher()
