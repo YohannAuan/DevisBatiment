@@ -37,12 +37,12 @@ public class Mur {
     double longueur(){
         return Math.sqrt((this.fin.px-this.debut.px)*(this.fin.px-this.debut.px)+(this.fin.py-this.debut.py)*(this.fin.py-this.debut.py));
     }
-   // double surface(){
-   //     double h;
-   //     System.out.println("Quelle est la hauteur ? ");
-   //     h=Lire.d();
+    double surface(){
+    double h;
+    System.out.println("Quelle est la hauteur ? ");
+    h=Lire.d();
         
-   //     return longueur()*h-(this.NbreFenetres*this.SurfaceFenetre)-(this.NbrePortes*this.SurfacePortes);
+    return longueur()*h-(this.NbreFenetres*1.8)-(this.NbrePortes*3);
         
-   // }
+    }
 }
