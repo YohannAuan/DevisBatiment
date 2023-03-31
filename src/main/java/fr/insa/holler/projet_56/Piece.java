@@ -11,9 +11,14 @@ import java.util.Map ;
 public class Piece {
     int idPiece ;
     int sol ;
-    int plafond ;
+    int planfond ;
     //List listeMurs ;
     
+    Piece (int id, int s, int pl) {
+        this.idPiece = id ;
+        this.sol = s ;
+        this.planfond = pl ;
+    }
 /*  Méthodes :
     afficher()
     toString()
