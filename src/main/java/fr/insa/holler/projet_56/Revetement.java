@@ -11,5 +11,12 @@ package fr.insa.holler.projet_56;
 public class Revetement {
     //Attributs
     double prix;
+    int idRevetement;
+    String designation;
+    boolean pourMur;
+    boolean pourSol;
+    boolean pourPlafond;
+    double prixUnitaire;
+  
     
 }
