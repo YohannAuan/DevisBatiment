@@ -10,7 +10,7 @@ package fr.insa.holler.projet_56;
  */
 public class Batiment {
     //Attributs
-    String idBatiment;
+    int idBatiment;
     //List Listeniveau;
     
     //Méthodes à implémenter
@@ -18,5 +18,9 @@ public class Batiment {
     //sauvegarder()
     //lireBatiment()
     //devisBatiment()
+    
+    Batiment (int id,Point p1,Point p2){
+    this.idBatiment=id;
+    }
     
 }
