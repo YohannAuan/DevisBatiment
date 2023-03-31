@@ -3,15 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fr.insa.holler.projet_56;
-
+import java.util.Map ;
 /**
  *
  * @author anato
  */
 public class Sol {
     int idSol ;
-    // List listeCoins ;
-    // List listeRevetements ;
+    List listeCoins ;
+    List listeRevetements ;
     
 /*  Méthodes :
     afficher()
