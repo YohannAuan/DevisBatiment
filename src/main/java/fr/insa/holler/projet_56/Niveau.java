@@ -15,6 +15,11 @@ public class Niveau {
     double hauteursousplafond;
     //List listeNiveau;
     
+    Niveau(int id,double h){
+        this.idNiveau=id;
+        this.hauteursousplafond=h;
+    }
+    
     //Méthodes
     //afficher()
     //toString()
