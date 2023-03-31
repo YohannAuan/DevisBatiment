@@ -25,7 +25,8 @@ public class Piece {
     }
     
     double Surface() {
-        
+        if(this.)
+        return() ;
     }
 /*  Méthodes :
     afficher()
