@@ -4,6 +4,9 @@
 
 package fr.insa.holler.projet_56;
 import java.util.Map ;
+import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 /**
  *
  * @author yohann
@@ -11,6 +14,9 @@ import java.util.Map ;
 public class Projet_56 {
 
     public static void main(String[] args) {
+     
+        int nbBat;
+        int i;
     
    /*Point p1,p2;
    Mur M1;
@@ -27,9 +33,35 @@ public class Projet_56 {
    b= +M1.surface();
    System.out.println(b);*/
    
+   System.out.println("Combien de batiment ? ");
+   nbBat=Lire.i();
+   
+   for (i=1 ; i<=nbBat ; i++) {
    Batiment B1;
-   B1=new Batiment(1);
+   B1=new Batiment(i);
    B1.afficher();
+   
+   }
+   
+   /*File fichmur = new File("mur.txt");
+   
+   System.out.println(fichmur.getAbsolutePath());*/
+   
+   try
+   {
+ BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+ 
+ 
+ out.write(i);
+ out.newLine();
+ 
+ out.close();
+ }
+ catch (IOException err)
+ {
+     System.out.println("Erreur :\n"+err);
+ }
+   
    
    
         }
