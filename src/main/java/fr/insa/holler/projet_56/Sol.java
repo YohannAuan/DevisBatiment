@@ -16,6 +16,9 @@ public class Sol {
     Sol(int id) {
         this.idSol = id ;
     }
+    public void afficher() {
+        System.out.println("Piece : idSol : "+this.idSol) ;
+    }
 /*  Méthodes :
     afficher()
     toString()
