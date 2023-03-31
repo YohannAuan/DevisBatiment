@@ -3,20 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fr.insa.holler.projet_56;
-import java.util.Map ;
+import java.util.ArrayList;
 /**
  *
  * @author anato
  */
 public class Sol {
     int idSol ;
-    //List listeCoins ;
-    //List listeRevetements ;
+    ArrayList <Point> listePoints = new ArrayList<Point>() ;
+    ArrayList <Revetement> listeRevetements = new ArrayList<Revetement>() ;
     
     Sol(int id) {
         this.idSol = id ;
     }
-    public void afficher() {
+    void afficher() {
         System.out.println("Piece : idSol : "+this.idSol) ;
     }
 /*  Méthodes :
