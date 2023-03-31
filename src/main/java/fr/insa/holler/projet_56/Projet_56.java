@@ -12,7 +12,7 @@ public class Projet_56 {
 
     public static void main(String[] args) {
     
-   Point p1,p2;
+   /*Point p1,p2;
    Mur M1;
    double a,b;
    p1=new Point(1,10.75,25.1);
@@ -25,7 +25,12 @@ public class Projet_56 {
    a= +M1.longueur();
    System.out.println(a);
    b= +M1.surface();
-   System.out.println(b);
+   System.out.println(b);*/
+   
+   Batiment B1;
+   B1=new Batiment(1);
+   B1.afficher();
+   
    
         }
         
