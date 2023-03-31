@@ -12,7 +12,7 @@ public class Piece {
     int idPiece ;
     int sol ;
     int plafond ;
-    List listeMurs ;
+    //List listeMurs ;
     
 /*  Méthodes :
     afficher()
