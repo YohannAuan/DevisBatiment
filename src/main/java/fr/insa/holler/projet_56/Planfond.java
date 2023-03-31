@@ -3,21 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fr.insa.holler.projet_56;
-import java.util.Map ;
+import java.util.ArrayList;
 /**
  *
  * @author anato
  */
 public class Planfond {
     int idPlanfond ;
-    //List listeCoins ; 
-    //List listeRevetements ;
+    ArrayList <Point> listePoints = new ArrayList<Point>() ;
+    ArrayList <Revetement> listeRevetements = new ArrayList<Revetement>() ;
 
     Planfond(int id) {
         this.idPlanfond = id ;
     }
     
-    public void afficher() {
+    void afficher() {
         System.out.println("Piece : idSol : "+this.idPlanfond) ;
     }
 /*  Méthodes :
