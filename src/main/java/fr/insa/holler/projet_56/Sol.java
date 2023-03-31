@@ -13,6 +13,9 @@ public class Sol {
     //List listeCoins ;
     //List listeRevetements ;
     
+    Sol(int id) {
+        this.idSol = id ;
+    }
 /*  Méthodes :
     afficher()
     toString()
