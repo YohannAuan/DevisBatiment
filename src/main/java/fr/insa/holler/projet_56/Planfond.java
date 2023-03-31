@@ -9,12 +9,16 @@ import java.util.Map ;
  * @author anato
  */
 public class Planfond {
-    int idPlafond ;
+    int idPlanfond ;
     //List listeCoins ; 
     //List listeRevetements ;
 
     Planfond(int id) {
-        this.idPlafond = id ;
+        this.idPlanfond = id ;
+    }
+    
+    public void afficher() {
+        System.out.println("Piece : idSol : "+this.idPlanfond) ;
     }
 /*  Méthodes :
     toString()
