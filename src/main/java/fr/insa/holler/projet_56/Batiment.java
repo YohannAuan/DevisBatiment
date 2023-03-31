@@ -19,8 +19,15 @@ public class Batiment {
     //lireBatiment()
     //devisBatiment()
     
-    Batiment (int id,Point p1,Point p2){
+    
+     Batiment (int id){
     this.idBatiment=id;
+    }
+    
+    void afficher (){
+        System.out.println("-_-_-_-_Batiment-_-_-_-_-_");
+        System.out.println("-_-_-_-_  " + this.idBatiment + "  _-_-_-_-_-_-_");
+        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_");
     }
     
 }
