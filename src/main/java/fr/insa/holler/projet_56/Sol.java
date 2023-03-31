@@ -10,8 +10,8 @@ import java.util.Map ;
  */
 public class Sol {
     int idSol ;
-    List listeCoins ;
-    List listeRevetements ;
+    //List listeCoins ;
+    //List listeRevetements ;
     
 /*  Méthodes :
     afficher()
