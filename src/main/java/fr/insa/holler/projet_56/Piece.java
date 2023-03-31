@@ -19,6 +19,9 @@ public class Piece {
         this.sol = s ;
         this.planfond = pl ;
     }
+    public void afficher() {
+        System.out.println("Piece : idPiece : "+this.idPiece+" Sol : "+this.sol+" planfond : "+this.planfond) ;
+    }
 /*  Méthodes :
     afficher()
     toString()
