@@ -18,5 +18,9 @@ public class Revetement {
     boolean pourPlafond;
     double prixUnitaire;
   
+    Revetement(int id,double p){
+        this.idRevetement=id;
+        this.prix=p;
+    }
     
 }
