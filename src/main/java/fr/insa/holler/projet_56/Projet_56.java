@@ -33,6 +33,26 @@ public class Projet_56 {
           }
     }
     
+    public static void ecriture_S(String nom_donnee, String valeur_S) 
+    {
+        
+         
+        
+        try
+            {
+          BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+
+          out.write(nom_donnee + " : ");
+          out.write(valeur_S);
+          out.newLine();
+
+          out.close();
+          }
+          catch (IOException err)
+          {
+              System.out.println("Erreur :\n"+err);
+          }
+    }
     
      public static void ecriture_() 
     {
@@ -91,29 +111,23 @@ public class Projet_56 {
 
               BufferedReader in=new BufferedReader(new FileReader("revetement.txt"));
               String ligne;
-              ligne=in.readLine();
+              
 
 
              /* while((ligne=in.readLine())!=null) */
                  
              for ( i=0 ; i<=18 ; i++)
               {
-                tabligne = ligne.split(";");
-                System.out.println(tabligne[1]);
-                if ((tabligne[1].compareTo("Parquet") == 0) /*&& (tabligne[3].compareTo("1")==0)*/ ){
+                tabligne = in.readLine().split(";");
+                /*System.out.println(tabligne[1]);*/
+                if ((tabligne[1].compareTo(revet) == 0) && (tabligne[2].compareTo("1")==0)){
                     System.out.println("oui");
                     prixM2=tabligne[5];
-                    System.out.println(tabligne[5]);
                     System.out.println(prixM2 );
-
-
-
-                }
-
-
+                 }
                }
 
-          in.close();
+              in.close();
              }
 
 
@@ -123,12 +137,53 @@ public class Projet_56 {
            catch (IOException err){
            System.out.println(" Erreur :\n "+err);}
          
+        
          double_prixM2=Double.parseDouble(prixM2);
          prix=double_prixM2*surface;
+         ecriture("prix au m2", double_prixM2);
+         ecriture_S("revêtement", revet);
          return prix;    
     }
 
+    public static void prix_mur(Mur M) 
+    {
+    String revet;
+    double surface;
+    Point p1, p2;
+    int idM;
+    
+    p1=M.debut;
+    p2=M.fin;
+    idM=M.idMur;
+    
+        ecriture("mur" ,idM);
+        ecriture_();
+        ecriture("x1" ,p1.px);
+        ecriture("y1" ,p1.py);
+        ecriture("x2" ,p2.px);
+        ecriture("y2" ,p2.py);
+        ecriture_();
+        ecriture("longueur" ,M.longueur());
+        ecriture("surface" , M.surface());
+        ecriture_();
+        ecriture_espace(3);
 
+
+
+         System.out.println(" quel revetement  ");
+         revet=Lire.S();
+         System.out.println("surface du sol");
+         surface=M.surface();
+
+
+         System.out.println(prix(surface, revet));
+
+
+         ecriture("prix", prix(surface, revet));
+         ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
+    
+}
+    
     public static void main(String[] args) {
      
         int nbBat;
@@ -151,7 +206,7 @@ public class Projet_56 {
    
    
    Point p1,p2;
-   Mur M1;
+   Mur M1, M2;
    double a,b;
    
    
@@ -166,43 +221,31 @@ public class Projet_56 {
    b= +M1.surface();
    System.out.println(b);
    
+   prix_mur(M1);
    
    
-   ecriture("mur" ,M1.idMur);
-   ecriture_();
-   ecriture("x1" ,p1.px);
-   ecriture("x2" ,p2.py);
-   ecriture_();
-   ecriture("longueur" ,a);
-   ecriture("surface" , b);
-   ecriture_();
-   ecriture_espace(10);
-   ecriture("mur" ,M1.idMur);
-   ecriture_();
-   ecriture("x1" ,p1.px);
-   ecriture("x2" ,p2.py);
-   ecriture_();
-   ecriture("longueur" ,a);
-   ecriture("surface" , b);
-   ecriture_();
-   ecriture_espace(10);
    
-  
-    System.out.println(" quel revetement  ");
-    revet=Lire.S();
-    System.out.println("surface du sol");
-    surface=Lire.d();
-
    
-    System.out.println(prix(surface, revet));
-
-   ecriture("prix", prix(surface, revet));
+   p1=new Point(1,23.4,12);
+   p2=new Point(2,5,7);
+   p1.afficher();
+   p2.afficher();
+   
+   M2=new Mur(2,p1,p2,0,0);
+   a= +M1.longueur();
+   System.out.println(a);
+   b= +M1.surface();
+   System.out.println(b);
+   
+   prix_mur(M2);
    
    
    
    
    
    
+   
+      
    
    
    
