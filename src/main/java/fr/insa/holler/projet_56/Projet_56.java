@@ -7,16 +7,14 @@ import java.util.Map ;
 import java.io.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-/**
- *
- * @author yohann
- */
+
+
 public class Projet_56 {
     
-    public static void ecriture(String nom_donnee, double pointE) 
+    public static void ecriture(String nom_donnee, double valeur) 
     {
         String pointEs ;
-        pointEs=Double.toString(pointE);
+        pointEs=Double.toString(valeur);
          
         
         try
@@ -34,6 +32,102 @@ public class Projet_56 {
               System.out.println("Erreur :\n"+err);
           }
     }
+    
+    
+     public static void ecriture_() 
+    {
+       try
+            {
+          BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+
+          out.write("_-_-_-_-_-_-_-_");
+          out.newLine();
+          out.close();
+          }
+          catch (IOException err)
+          {
+              System.out.println("Erreur :\n"+err);
+          }
+    }
+     
+      public static void ecriture_espace(int espace) 
+    {
+       int i;
+        
+        try
+            {
+          BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+
+          for ( i=1 ; i<=espace ; i++){
+          
+          out.newLine();
+          out.close();
+          }
+            
+            }
+          catch (IOException err)
+          {
+              System.out.println("Erreur :\n"+err);
+          }
+    }
+
+    public static double prix(double surface, String revet ) 
+    {
+        
+        
+        String [] tabligne = new String [30];
+        String prixM2;
+        double double_prixM2;
+        double prix;
+        int i;
+        
+        prixM2="0";
+        
+            
+
+             try 
+             {
+
+
+              BufferedReader in=new BufferedReader(new FileReader("revetement.txt"));
+              String ligne;
+              ligne=in.readLine();
+
+
+             /* while((ligne=in.readLine())!=null) */
+                 
+             for ( i=0 ; i<=18 ; i++)
+              {
+                tabligne = ligne.split(";");
+                System.out.println(tabligne[1]);
+                if ((tabligne[1].compareTo("Parquet") == 0) /*&& (tabligne[3].compareTo("1")==0)*/ ){
+                    System.out.println("oui");
+                    prixM2=tabligne[5];
+                    System.out.println(tabligne[5]);
+                    System.out.println(prixM2 );
+
+
+
+                }
+
+
+               }
+
+          in.close();
+             }
+
+
+           catch(FileNotFoundException err){
+           System.out.println( "Erreur :le fichier n’existe pas!\n "+err);}
+
+           catch (IOException err){
+           System.out.println(" Erreur :\n "+err);}
+         
+         double_prixM2=Double.parseDouble(prixM2);
+         prix=double_prixM2*surface;
+         return prix;    
+    }
+
 
     public static void main(String[] args) {
      
@@ -48,10 +142,6 @@ public class Projet_56 {
         i=1;
         prixM2="0";
         surface=3;
-   
-   
-   /*System.out.println("Combien de batiment ? ");
-   nbBat=Lire.i();*/
    
   System.out.println("");
    
@@ -77,12 +167,51 @@ public class Projet_56 {
    System.out.println(b);
    
    
-   System.out.println("");
+   
+   ecriture("mur" ,M1.idMur);
+   ecriture_();
    ecriture("x1" ,p1.px);
    ecriture("x2" ,p2.py);
-   System.out.println("");
+   ecriture_();
    ecriture("longueur" ,a);
    ecriture("surface" , b);
+   ecriture_();
+   ecriture_espace(10);
+   ecriture("mur" ,M1.idMur);
+   ecriture_();
+   ecriture("x1" ,p1.px);
+   ecriture("x2" ,p2.py);
+   ecriture_();
+   ecriture("longueur" ,a);
+   ecriture("surface" , b);
+   ecriture_();
+   ecriture_espace(10);
+   
+  
+    System.out.println(" quel revetement  ");
+    revet=Lire.S();
+    System.out.println("surface du sol");
+    surface=Lire.d();
+
+   
+    System.out.println(prix(surface, revet));
+
+   ecriture("prix", prix(surface, revet));
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    /*File fichmur = new File("mur.txt");
    
@@ -90,57 +219,7 @@ public class Projet_56 {
    */
    
   
-   /*
    
-  System.out.println(" quel revetement  ");
-  revet=Lire.S();
-  System.out.println("surface du sol");
-  surface=Lire.d();
-   
-   
-   
-   try 
-   {
-
-
-    BufferedReader in=new BufferedReader(new FileReader("revetement.txt"));
-    String ligne;
-       
-    
- 
-   while((ligne=in.readLine())!=null)
-    {
-      tabligne = ligne.split(";");
-      if ((tabligne[1].compareTo(revet) == 0) && (tabligne[3].compareTo("1")==0)){
-          prixM2=tabligne[5];
-           System.out.println(tabligne[5]);
-          System.out.println(prixM2 );
-           
-
-        
-      }
-       
-
-     }
-   
-in.close();
-   }
-
-
- catch(FileNotFoundException err){
- System.out.println( "Erreur :le fichier n’existe pas!\n "+err);}
-
- catch (IOException err){
- System.out.println(" Erreur :\n "+err);}
-  
-   
-   double pm2 = Double.parseDouble(prixM2);
-
-      System.out.println(pm2*surface);
-
-    */
-    
-    
     }     
       
     }
