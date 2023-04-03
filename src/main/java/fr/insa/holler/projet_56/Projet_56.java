@@ -151,15 +151,14 @@ public class Projet_56 {
     idM=M.idMur;
     
         ecriture("mur" ,idM);
-        ecriture_();
+        ecriture_espace(3);
         ecriture("x1" ,p1.px);
         ecriture("y1" ,p1.py);
         ecriture("x2" ,p2.px);
         ecriture("y2" ,p2.py);
-        ecriture_();
+        ecriture_espace(3);
         ecriture("longueur" ,M.longueur());
         ecriture("surface" , M.surface());
-        ecriture_();
         ecriture_espace(3);
 
 
@@ -173,14 +172,15 @@ public class Projet_56 {
 }
     
     
-   public static void creation_piece()
+   public static void creation_piece(int idP_plus, int idM_plus)
    {
     
    Point p1,p2,p3,p4;
    double diag1x, diag1y, diag2x, diag2y;
    Mur M1, M2, M3, M4;
+   Piece P1;
    double a,b;
-   int k;   k=1;
+   
    
        
    System.out.println("entrer deux points diagonals de la pièce :");
@@ -205,29 +205,30 @@ public class Projet_56 {
    p1.afficher();
    p2.afficher();*/
    
-   M1=new Mur(k,p1,p2,0,0);
+   M1=new Mur(idM_plus,p1,p2,0,0);
+   idM_plus=idM_plus+1;
+   
+   M2=new Mur(idM_plus,p2,p3,0,0);
+   idM_plus=idM_plus+1;
+
+   M3=new Mur(idM_plus,p3,p4,0,0); 
+   idM_plus=idM_plus+1;
+
+   M4=new Mur(idM_plus,p4,p1,0,0); 
+   idM_plus=idM_plus+1;
+
+   P1=new Piece(idP_plus, 0, 0);
+   P1.afficher();
+   
+   ecriture("Piece numero : ", P1.idPiece);
    prix_mur_ecriture(M1);
-   
-   k=k+1;
-   
-   M2=new Mur(k,p2,p3,0,0);
    prix_mur_ecriture(M2);
-   
-   k=k+1;
-
-   M3=new Mur(k,p3,p4,0,0); 
    prix_mur_ecriture(M3);
-   
-   k=k+1;
-
-   M4=new Mur(k,p4,p1,0,0); 
    prix_mur_ecriture(M4);
    
-   k=k+1;
-
-   ecriture_();
-   ecriture_espace(3);ecriture_espace(3);
    
+   ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);ecriture_();
+   ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
    }
     
     public static void main(String[] args) {
@@ -239,7 +240,8 @@ public class Projet_56 {
         String prixM2;
         double surface;
         int nbpiece;
-        
+        int idP_plus; idP_plus=1;
+        int idM_plus; idM_plus=1;
         
         i=1;
         prixM2="0";
@@ -258,7 +260,8 @@ public class Projet_56 {
    nbpiece=Lire.i();
 
    for ( i=1 ; i<=nbpiece ; i++){
-        creation_piece();
+        creation_piece(idP_plus, idM_plus);
+        idP_plus=idP_plus+1;
    }
    
    
