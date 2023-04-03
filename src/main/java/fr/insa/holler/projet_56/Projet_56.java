@@ -139,6 +139,36 @@ public class Projet_56 {
          return prix;    
     }
 
+    public static void memoire_mur(Mur M, int id_memoire)
+    {
+        
+        Point p1, p2;
+        int idM;
+        
+        p1=M.debut;
+        p2=M.fin;
+        idM=M.idMur;
+         
+        
+        try
+            {
+          BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
+          
+          System.out.println(id_memoire);
+
+          out.write( Double.toString(id_memoire));out.write( ";");
+          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py);
+          out.newLine();
+
+          out.close();
+          }
+          catch (IOException err)
+          {
+              System.out.println("Erreur :\n"+err);
+          }
+        
+    }
+    
     public static void prix_mur_ecriture(Mur M) 
     {
     String revet;
@@ -172,7 +202,7 @@ public class Projet_56 {
 }
     
     
-   public static void creation_piece(int idP_plus, int idM_plus)
+   public static void creation_piece(int idP_plus, int idM_plus, int id_memoire)
    {
     
    Point p1,p2,p3,p4;
@@ -220,6 +250,11 @@ public class Projet_56 {
    P1=new Piece(idP_plus, 0, 0);
    P1.afficher();
    
+   memoire_mur(M1, id_memoire);
+   memoire_mur(M2, id_memoire);
+   memoire_mur(M3, id_memoire);
+   memoire_mur(M4, id_memoire);
+   
    ecriture("Piece numero : ", P1.idPiece);
    prix_mur_ecriture(M1);
    prix_mur_ecriture(M2);
@@ -242,6 +277,7 @@ public class Projet_56 {
         int nbpiece;
         int idP_plus; idP_plus=1;
         int idM_plus; idM_plus=1;
+        int id_memoire; id_memoire=1;
         
         i=1;
         prixM2="0";
@@ -260,13 +296,14 @@ public class Projet_56 {
    nbpiece=Lire.i();
 
    for ( i=1 ; i<=nbpiece ; i++){
-        creation_piece(idP_plus, idM_plus);
+        creation_piece(idP_plus, idM_plus, id_memoire);
         idP_plus=idP_plus+1;
+        
    }
    
    
    
-   
+   /* id memoire pour +1 */
 
    
   
