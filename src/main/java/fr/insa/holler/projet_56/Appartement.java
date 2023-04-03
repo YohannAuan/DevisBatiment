@@ -8,6 +8,6 @@ package fr.insa.holler.projet_56;
  *
  * @author yohan
  */
-public class Appartement extends Batiment{
+public class Appartement {
     
 }
