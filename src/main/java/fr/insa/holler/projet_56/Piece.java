@@ -24,7 +24,7 @@ public class Piece {
         System.out.println("Piece : idPiece : "+this.idPiece+" Sol : "+this.sol+" planfond : "+this.planfond) ;
     }
     
-    double Surface() {
+    /*double Surface() {
         if(this.)
         return() ;
     }
