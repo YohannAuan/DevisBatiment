@@ -6,6 +6,7 @@ package fr.insa.holler.projet_56;
 // Bonjour c'est Totole
 
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  *
@@ -15,6 +16,7 @@ public class Mur {
     //Attributs
     int idMur,NbrePortes,NbreFenetres;
     Point fin,debut;
+    
     
     
     Mur(int id,Point p1,Point p2,int p,int f){
@@ -39,10 +41,10 @@ public class Mur {
     }
     double surface(){
     double h;
-    System.out.println("Quelle est la hauteur ? ");
-    h=Lire.d();
+    /* System.out.println("Quelle est la hauteur ? ");
+    h=Lire.d(); */
         
-    return longueur()*h-(this.NbreFenetres*1.8)-(this.NbrePortes*3);
+    return longueur()*2.7-(this.NbreFenetres*1.8)-(this.NbrePortes*3);  /* h=2.7 */
         
     }
 }
