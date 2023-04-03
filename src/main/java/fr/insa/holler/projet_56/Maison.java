@@ -8,7 +8,7 @@ package fr.insa.holler.projet_56;
  *
  * @author yohan
  */
-public class Maison extends Batiment {
+public class Maison  {
     
     
 }
