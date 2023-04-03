@@ -32,6 +32,8 @@ public class Projet_56 {
    B1.afficher();
    
    
+   
+   
         }
         
       
