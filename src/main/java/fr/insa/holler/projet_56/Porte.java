@@ -8,6 +8,6 @@ package fr.insa.holler.projet_56;
  *
  * @author yohan
  */
-public class Porte extends Ouverture {
+public class Porte   {
 
 }
