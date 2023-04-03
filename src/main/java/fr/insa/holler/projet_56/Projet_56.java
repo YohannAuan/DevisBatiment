@@ -102,18 +102,12 @@ public class Projet_56 {
         int i;
         
         prixM2="0";
-        
-            
-
+     
              try 
              {
-
-
               BufferedReader in=new BufferedReader(new FileReader("revetement.txt"));
               String ligne;
               
-
-
              /* while((ligne=in.readLine())!=null) */
                  
              for ( i=0 ; i<=18 ; i++)
@@ -145,7 +139,7 @@ public class Projet_56 {
          return prix;    
     }
 
-    public static void prix_mur(Mur M) 
+    public static void prix_mur_ecriture(Mur M) 
     {
     String revet;
     double surface;
@@ -172,17 +166,69 @@ public class Projet_56 {
 
          System.out.println(" quel revetement  ");
          revet=Lire.S();
-         System.out.println("surface du sol");
          surface=M.surface();
-
-
-         System.out.println(prix(surface, revet));
-
-
          ecriture("prix", prix(surface, revet));
          ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
     
 }
+    
+    
+   public static void creation_piece()
+   {
+    
+   Point p1,p2,p3,p4;
+   double diag1x, diag1y, diag2x, diag2y;
+   Mur M1, M2, M3, M4;
+   double a,b;
+   int k;   k=1;
+   
+       
+   System.out.println("entrer deux points diagonals de la pièce :");
+   
+   diag1x=Lire.d();
+   diag1y=Lire.d();
+   diag2x=Lire.d();
+   diag2y=Lire.d();
+   
+   p1=new Point(1,diag1x,diag1y);
+   p3=new Point(3,diag2x,diag2y);
+   p2=new Point(2,diag1x,diag2y);
+   p4=new Point(4,diag2x,diag1y);
+   p1.afficher();
+   p2.afficher();
+   p3.afficher();
+   p4.afficher();
+   
+   
+   /*p1=new Point(1,10.75,25.1);
+   p2=new Point(2,10,25);
+   p1.afficher();
+   p2.afficher();*/
+   
+   M1=new Mur(k,p1,p2,0,0);
+   prix_mur_ecriture(M1);
+   
+   k=k+1;
+   
+   M2=new Mur(k,p2,p3,0,0);
+   prix_mur_ecriture(M2);
+   
+   k=k+1;
+
+   M3=new Mur(k,p3,p4,0,0); 
+   prix_mur_ecriture(M3);
+   
+   k=k+1;
+
+   M4=new Mur(k,p4,p1,0,0); 
+   prix_mur_ecriture(M4);
+   
+   k=k+1;
+
+   ecriture_();
+   ecriture_espace(3);ecriture_espace(3);
+   
+   }
     
     public static void main(String[] args) {
      
@@ -192,6 +238,7 @@ public class Projet_56 {
         String revet;
         String prixM2;
         double surface;
+        int nbpiece;
         
         
         i=1;
@@ -205,61 +252,19 @@ public class Projet_56 {
    B1.afficher();
    
    
-   Point p1,p2;
-   Mur M1, M2;
-   double a,b;
    
    
-   p1=new Point(1,10.75,25.1);
-   p2=new Point(2,10,25);
-   p1.afficher();
-   p2.afficher();
-   
-   M1=new Mur(1,p1,p2,0,0);
-   a= +M1.longueur();
-   System.out.println(a);
-   b= +M1.surface();
-   System.out.println(b);
-   
-   prix_mur(M1);
+   System.out.println("nombre de pièce : ");
+   nbpiece=Lire.i();
+
+   for ( i=1 ; i<=nbpiece ; i++){
+        creation_piece();
+   }
    
    
    
    
-   p1=new Point(1,23.4,12);
-   p2=new Point(2,5,7);
-   p1.afficher();
-   p2.afficher();
-   
-   M2=new Mur(2,p1,p2,0,0);
-   a= +M1.longueur();
-   System.out.println(a);
-   b= +M1.surface();
-   System.out.println(b);
-   
-   prix_mur(M2);
-   
-   
-   
-   
-   
-   
-   
-      
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   /*File fichmur = new File("mur.txt");
-   
-   System.out.println(fichmur.getAbsolutePath());
-   */
+
    
   
    
