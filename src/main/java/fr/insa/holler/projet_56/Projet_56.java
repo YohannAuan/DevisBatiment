@@ -144,6 +144,7 @@ public class Projet_56 {
         
         Point p1, p2;
         int idM;
+        String S_id_memoire;
         
         p1=M.debut;
         p2=M.fin;
@@ -155,8 +156,8 @@ public class Projet_56 {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
           System.out.println(id_memoire);
-
-          out.write( Double.toString(id_memoire));out.write( ";");
+          S_id_memoire=Double.toString(id_memoire);
+          out.write( S_id_memoire);out.write( ";");
           out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py);
           out.newLine();
 
@@ -251,9 +252,14 @@ public class Projet_56 {
    P1.afficher();
    
    memoire_mur(M1, id_memoire);
-   memoire_mur(M2, id_memoire);
+   id_memoire=id_memoire+1;
+   memoire_mur(M2, id_memoire);  
+   id_memoire=id_memoire+1;
    memoire_mur(M3, id_memoire);
+   id_memoire=id_memoire+1;
    memoire_mur(M4, id_memoire);
+   id_memoire=id_memoire+1;
+   
    
    ecriture("Piece numero : ", P1.idPiece);
    prix_mur_ecriture(M1);
@@ -298,7 +304,7 @@ public class Projet_56 {
    for ( i=1 ; i<=nbpiece ; i++){
         creation_piece(idP_plus, idM_plus, id_memoire);
         idP_plus=idP_plus+1;
-        
+        id_memoire=i*4+1;
    }
    
    
