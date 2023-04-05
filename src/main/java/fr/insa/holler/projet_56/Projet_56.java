@@ -155,8 +155,8 @@ public class Projet_56 {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
           S_id_memoire=Double.toString(M.idMur);
-          out.write(id_bat + ";" + idP_plus + ";" + M.idMur + "    " + ";" + p1.px + ";" 
-                  + p1.py + ";" + p2.px + ";" + p2.py + ";" + "   " + prix(M.surface(), M.revet));
+          out.write(id_bat + ";" + idP_plus + ";" + M.idMur + ";" + "    " + ";" + p1.px + ";" 
+                  + p1.py + ";" + p2.px + ";" + p2.py + ";" +  "   " + ";" + prix(M.surface(), M.revet) + ";");
           
           out.newLine();
 
@@ -306,16 +306,22 @@ public class Projet_56 {
              String ligne; 
              while((ligne=in.readLine())!=null) 
               {
-                tabligne = in.readLine().split(";");
+                
+                  
+                  
+                System.out.println(ligne);
+
+                tabligne = ligne.split(";");
                 /*System.out.println(tabligne[1]);*/
                 
-                System.out.println(S_idp);
-                 System.out.println("Calcul prix total de la piece : ");
+                 System.out.println(idp);
+                 
                     
                  int_tab=Integer.parseInt(tabligne[1]);
-                 
+                 System.out.println(int_tab);
+
                 if (idp==int_tab) {
-                    double_prix=Double.parseDouble(tabligne[7]);
+                    double_prix=Double.parseDouble(tabligne[9]);
                     prix_tot_piece=prix_tot_piece+double_prix;
                     System.out.println(double_prix);
 
