@@ -134,8 +134,7 @@ public class Projet_56 {
         
          double_prixM2=Double.parseDouble(prixM2);
          prix=double_prixM2*surface;
-         ecriture("prix au m2", double_prixM2);
-         ecriture_S("revêtement", revet);
+       
          return prix;    
     }
 
@@ -156,7 +155,8 @@ public class Projet_56 {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
           S_id_memoire=Double.toString(M.idMur);
-          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py + ";" + M.idMur + ";" + idP_plus + ";" + id_bat + ";");
+          out.write(id_bat + ";" + idP_plus + ";" + M.idMur + "    " + ";" + p1.px + ";" 
+                  + p1.py + ";" + p2.px + ";" + p2.py + ";" + "   " + prix(M.surface(), M.revet));
           
           out.newLine();
 
@@ -171,7 +171,7 @@ public class Projet_56 {
     
     public static void prix_mur_ecriture(Mur M) 
     {
-    String revet;
+    
     double surface;
     Point p1, p2;
     
@@ -193,10 +193,12 @@ public class Projet_56 {
 
 
 
-         System.out.println(" quel revetement  ");
-         revet=Lire.S();
+         
          surface=M.surface();
-         ecriture("prix", prix(surface, revet));
+         ;
+         ecriture_S("revêtement", M.revet);
+         ecriture("prix", prix(surface, M.revet));
+         
          ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
     
 }
@@ -211,7 +213,7 @@ public class Projet_56 {
    Piece P1;
    double a,b;
    int id_bat;
-   
+   String revet;
    
    System.out.println(" ajouter a quel batiment ? ");
    id_bat=Lire.i();
@@ -238,19 +240,31 @@ public class Projet_56 {
    p1.afficher();
    p2.afficher();*/
    
-   M1=new Mur(idM_plus,p1,p2,0,0);
+   System.out.println(" quel revetement  ");
+         revet=Lire.S();
+   
+   M1=new Mur(idM_plus,p1,p2,0,0, revet);
    memoire_mur(M1, idP_plus, id_bat);
    idM_plus=idM_plus+1;
    
-   M2=new Mur(idM_plus,p2,p3,0,0);
+   System.out.println(" quel revetement  ");
+         revet=Lire.S();
+   
+   M2=new Mur(idM_plus,p2,p3,0,0, revet);
    memoire_mur(M2, idP_plus, id_bat);
    idM_plus=idM_plus+1;
 
-   M3=new Mur(idM_plus,p3,p4,0,0); 
+   System.out.println(" quel revetement  ");
+         revet=Lire.S();
+         
+   M3=new Mur(idM_plus,p3,p4,0,0, revet); 
    memoire_mur(M3, idP_plus, id_bat);
    idM_plus=idM_plus+1;
+   
+   System.out.println(" quel revetement  ");
+         revet=Lire.S();
 
-   M4=new Mur(idM_plus,p4,p1,0,0); 
+   M4=new Mur(idM_plus,p4,p1,0,0, revet); 
    memoire_mur(M4, idP_plus, id_bat);
    idM_plus=idM_plus+1;
 
@@ -277,6 +291,52 @@ public class Projet_56 {
         B1.afficher();
    }
    
+   public static double total_piece(int idp)
+   {
+       
+       String [] tabligne = new String [30];
+       String S_idp;
+       double prix_tot_piece , double_prix; prix_tot_piece=0;
+       int int_tab;
+       
+        try 
+             {
+              BufferedReader in=new BufferedReader(new FileReader("memoire.txt"));
+             S_idp=Double.toString(idp); 
+             String ligne; 
+             while((ligne=in.readLine())!=null) 
+              {
+                tabligne = in.readLine().split(";");
+                /*System.out.println(tabligne[1]);*/
+                
+                System.out.println(S_idp);
+                 System.out.println("Calcul prix total de la piece : ");
+                    
+                 int_tab=Integer.parseInt(tabligne[1]);
+                 
+                if (idp==int_tab) {
+                    double_prix=Double.parseDouble(tabligne[7]);
+                    prix_tot_piece=prix_tot_piece+double_prix;
+                    System.out.println(double_prix);
+
+                 }
+               }
+
+              in.close();
+             }
+
+
+           catch(FileNotFoundException err){
+           System.out.println( "Erreur :le fichier n’existe pas!\n "+err);}
+
+           catch (IOException err){
+           System.out.println(" Erreur :\n "+err);}
+         
+        return prix_tot_piece;
+       
+      
+   }
+   
     public static void main(String[] args) {
      
         //-------------------
@@ -284,7 +344,7 @@ public class Projet_56 {
         String [] tabligne = new String [30];
         String revet , prixM2  ;
         double surface;
-        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur , idB_plus; 
+        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur , idB_plus, idp; 
         idM_plus=1; idP_plus=1; id_memoire=1; choisissateur=10; idB_plus=1 ;
         
         //-------------------
@@ -301,6 +361,7 @@ public class Projet_56 {
            System.out.println("Que voulez vous faire ?  ");
            System.out.println(" creer batiment ");
            System.out.println(" ajouter piece ");
+           System.out.println(" calcul du prix piece ");
            choisissateur=Lire.i();
            
            if (choisissateur==2)
@@ -317,6 +378,16 @@ public class Projet_56 {
                idB_plus=idB_plus+1;
                
                
+           } 
+           
+           if (choisissateur==3)
+           {
+             System.out.println("Calcul prix total de la piece : ");
+             System.out.println("Quel piece ? ");
+             idp=Lire.i();
+             
+             System.out.println("total de la piece " + total_piece(idp));
+                         
            } 
 
       }
