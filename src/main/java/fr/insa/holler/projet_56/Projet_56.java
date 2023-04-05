@@ -115,9 +115,9 @@ public class Projet_56 {
                 tabligne = in.readLine().split(";");
                 /*System.out.println(tabligne[1]);*/
                 if ((tabligne[1].compareTo(revet) == 0) && (tabligne[2].compareTo("1")==0)){
-                    System.out.println("oui");
+                    
                     prixM2=tabligne[5];
-                    System.out.println(prixM2 );
+                    
                  }
                }
 
@@ -139,7 +139,7 @@ public class Projet_56 {
          return prix;    
     }
 
-    public static void memoire_mur(Mur M, int idP_plus)
+    public static void memoire_mur(Mur M, int idP_plus, int id_bat)
     {
         
         Point p1, p2;
@@ -156,7 +156,7 @@ public class Projet_56 {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
           S_id_memoire=Double.toString(M.idMur);
-          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py + ";" + M.idMur + ";" + idP_plus + ";");
+          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py + ";" + M.idMur + ";" + idP_plus + ";" + id_bat + ";");
           
           out.newLine();
 
@@ -202,7 +202,7 @@ public class Projet_56 {
 }
     
     
-   public static void creation_piece(int idP_plus, int idM_plus, int id_memoire)
+   public static void creation_piece(int idP_plus, int idM_plus)
    {
     
    Point p1,p2,p3,p4;
@@ -210,8 +210,11 @@ public class Projet_56 {
    Mur M1, M2, M3, M4;
    Piece P1;
    double a,b;
+   int id_bat;
    
    
+   System.out.println(" ajouter a quel batiment ? ");
+   id_bat=Lire.i();
        
    System.out.println("entrer deux points diagonals de la pièce :");
    
@@ -236,19 +239,19 @@ public class Projet_56 {
    p2.afficher();*/
    
    M1=new Mur(idM_plus,p1,p2,0,0);
-   memoire_mur(M1, idP_plus);
+   memoire_mur(M1, idP_plus, id_bat);
    idM_plus=idM_plus+1;
    
    M2=new Mur(idM_plus,p2,p3,0,0);
-   memoire_mur(M2, idP_plus);
+   memoire_mur(M2, idP_plus, id_bat);
    idM_plus=idM_plus+1;
 
    M3=new Mur(idM_plus,p3,p4,0,0); 
-   memoire_mur(M3, idP_plus);
+   memoire_mur(M3, idP_plus, id_bat);
    idM_plus=idM_plus+1;
 
    M4=new Mur(idM_plus,p4,p1,0,0); 
-   memoire_mur(M4, idP_plus);
+   memoire_mur(M4, idP_plus, id_bat);
    idM_plus=idM_plus+1;
 
    P1=new Piece(idP_plus, 0, 0);
@@ -267,41 +270,54 @@ public class Projet_56 {
    ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
    }
     
+   public static void creation_bat(int idB_plus)
+   {
+        Batiment B1;
+        B1=new Batiment(idB_plus);
+        B1.afficher();
+   }
+   
     public static void main(String[] args) {
      
+        //-------------------
+        
         String [] tabligne = new String [30];
         String revet , prixM2  ;
         double surface;
-        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur; 
-        idM_plus=1; idP_plus=1; id_memoire=1; choisissateur=10;
+        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur , idB_plus; 
+        idM_plus=1; idP_plus=1; id_memoire=1; choisissateur=10; idB_plus=1 ;
         
+        //-------------------
         
         i=1;
         prixM2="0";
         surface=3;
+        
+        //-------------------
    
-  /* System.out.println("");
-   
-   Batiment B1;
-   B1=new Batiment(i);
-   B1.afficher(); */ 
-   
-    
-
         
     while ( choisissateur!=0)
       {
-           System.out.println("Que voulez vous faire ? (creer piece) ");
+           System.out.println("Que voulez vous faire ?  ");
+           System.out.println(" creer batiment ");
+           System.out.println(" ajouter piece ");
            choisissateur=Lire.i();
            
-           if (choisissateur==1)
+           if (choisissateur==2)
            {
-               creation_piece(idP_plus, idM_plus, id_memoire);
+               creation_piece(idP_plus, idM_plus);
                idP_plus=idP_plus+1;
-               id_memoire=i*4+1;
+               /*id_memoire=i*4+1;*/
                
            }
            
+           if (choisissateur==1)
+           {
+               creation_bat(idB_plus);
+               idB_plus=idB_plus+1;
+               
+               
+           } 
 
       }
    
