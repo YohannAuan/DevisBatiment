@@ -156,7 +156,7 @@ public class Projet_56 {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
           S_id_memoire=Double.toString(M.idMur);
-          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py + ";" + S_id_memoire + ";" + idP_plus + ";");
+          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py + ";" + M.idMur + ";" + idP_plus + ";");
           
           out.newLine();
 
