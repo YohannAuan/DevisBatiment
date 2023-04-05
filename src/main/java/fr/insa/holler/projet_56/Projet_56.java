@@ -139,26 +139,25 @@ public class Projet_56 {
          return prix;    
     }
 
-    public static void memoire_mur(Mur M, int id_memoire)
+    public static void memoire_mur(Mur M, int idP_plus)
     {
         
         Point p1, p2;
-        int idM;
+        
         String S_id_memoire;
         
         p1=M.debut;
         p2=M.fin;
-        idM=M.idMur;
+        
          
         
         try
             {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
-          System.out.println(id_memoire);
-          S_id_memoire=Double.toString(id_memoire);
-          out.write( S_id_memoire);out.write( ";");
-          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py);
+          S_id_memoire=Double.toString(M.idMur);
+          out.write(p1.px + ";" + p1.py + ";" + p2.px + ";" + p2.py + ";" + S_id_memoire + ";" + idP_plus + ";");
+          
           out.newLine();
 
           out.close();
@@ -175,13 +174,13 @@ public class Projet_56 {
     String revet;
     double surface;
     Point p1, p2;
-    int idM;
+    
     
     p1=M.debut;
     p2=M.fin;
-    idM=M.idMur;
+
     
-        ecriture("mur" ,idM);
+        ecriture("mur" ,M.idMur);
         ecriture_espace(3);
         ecriture("x1" ,p1.px);
         ecriture("y1" ,p1.py);
@@ -237,28 +236,24 @@ public class Projet_56 {
    p2.afficher();*/
    
    M1=new Mur(idM_plus,p1,p2,0,0);
+   memoire_mur(M1, idP_plus);
    idM_plus=idM_plus+1;
    
    M2=new Mur(idM_plus,p2,p3,0,0);
+   memoire_mur(M2, idP_plus);
    idM_plus=idM_plus+1;
 
    M3=new Mur(idM_plus,p3,p4,0,0); 
+   memoire_mur(M3, idP_plus);
    idM_plus=idM_plus+1;
 
    M4=new Mur(idM_plus,p4,p1,0,0); 
+   memoire_mur(M4, idP_plus);
    idM_plus=idM_plus+1;
 
    P1=new Piece(idP_plus, 0, 0);
    P1.afficher();
-   
-   memoire_mur(M1, id_memoire);
-   id_memoire=id_memoire+1;
-   memoire_mur(M2, id_memoire);  
-   id_memoire=id_memoire+1;
-   memoire_mur(M3, id_memoire);
-   id_memoire=id_memoire+1;
-   memoire_mur(M4, id_memoire);
-   id_memoire=id_memoire+1;
+  
    
    
    ecriture("Piece numero : ", P1.idPiece);
@@ -274,47 +269,62 @@ public class Projet_56 {
     
     public static void main(String[] args) {
      
-        int nbBat;
-        int i;
         String [] tabligne = new String [30];
-        String revet;
-        String prixM2;
+        String revet , prixM2  ;
         double surface;
-        int nbpiece;
-        int idP_plus; idP_plus=1;
-        int idM_plus; idM_plus=1;
-        int id_memoire; id_memoire=1;
+        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur; 
+        idM_plus=1; idP_plus=1; id_memoire=1; choisissateur=10;
+        
         
         i=1;
         prixM2="0";
         surface=3;
    
-  System.out.println("");
+  /* System.out.println("");
    
    Batiment B1;
    B1=new Batiment(i);
-   B1.afficher();
+   B1.afficher(); */ 
+   
+    
+
+        
+    while ( choisissateur!=0)
+      {
+           System.out.println("Que voulez vous faire ? (creer piece) ");
+           choisissateur=Lire.i();
+           
+           if (choisissateur==1)
+           {
+               creation_piece(idP_plus, idM_plus, id_memoire);
+               idP_plus=idP_plus+1;
+               id_memoire=i*4+1;
+               
+           }
+           
+
+      }
    
    
    
    
-   System.out.println("nombre de pièce : ");
+   
+   
+   /* System.out.println("nombre de pièce : ");
    nbpiece=Lire.i();
 
    for ( i=1 ; i<=nbpiece ; i++){
-        creation_piece(idP_plus, idM_plus, id_memoire);
-        idP_plus=idP_plus+1;
-        id_memoire=i*4+1;
-   }
+        
+   }*/
    
    
    
-   /* id memoire pour +1 */
+   
 
    
   
    
-    }     
+    }    
       
     }
 
