@@ -29,7 +29,7 @@ public class Projet_56 {
           }
           catch (IOException err)
           {
-              System.out.println("Erreur :\n"+err);
+              //System.out.println("Erreur :\n"+err);
           }
     }
     
@@ -50,7 +50,7 @@ public class Projet_56 {
           }
           catch (IOException err)
           {
-              System.out.println("Erreur :\n"+err);
+              //System.out.println("Erreur :\n"+err);
           }
     }
     
@@ -66,7 +66,7 @@ public class Projet_56 {
           }
           catch (IOException err)
           {
-              System.out.println("Erreur :\n"+err);
+              //System.out.println("Erreur :\n"+err);
           }
     }
      
@@ -87,7 +87,7 @@ public class Projet_56 {
             }
           catch (IOException err)
           {
-              System.out.println("Erreur :\n"+err);
+              //System.out.println("Erreur :\n"+err);
           }
     }
 
@@ -126,10 +126,12 @@ public class Projet_56 {
 
 
            catch(FileNotFoundException err){
-           System.out.println( "Erreur :le fichier n’existe pas!\n "+err);}
+           //System.out.println( "Erreur :le fichier n’existe pas!\n "+err);
+           }
 
            catch (IOException err){
-           System.out.println(" Erreur :\n "+err);}
+           //System.out.println(" Erreur :\n "+err);
+           }
          
         
          double_prixM2=Double.parseDouble(prixM2);
@@ -164,7 +166,7 @@ public class Projet_56 {
           }
           catch (IOException err)
           {
-              System.out.println("Erreur :\n"+err);
+              //System.out.println("Erreur :\n"+err);
           }
         
     }
@@ -203,8 +205,54 @@ public class Projet_56 {
     
 }
     
+    public static boolean verification_non_existence(int idp, int idB)
+    {
+       String [] tabligne = new String [30];
+       String S_idp;
+       
+       int int_tab, int_tab2;
+       boolean verif; verif=true;
+       
+        try 
+             {
+             BufferedReader in=new BufferedReader(new FileReader("memoire.txt"));
+             S_idp=Double.toString(idp); 
+             String ligne; 
+             while((ligne=in.readLine())!=null) 
+              {
+                
+        
+
+                tabligne = ligne.split(";");
+                /*System.out.println(tabligne[1]);*/             
+                 
+                    
+                 int_tab=Integer.parseInt(tabligne[1]);           
+                 int_tab2=Integer.parseInt(tabligne[0]);
+                 
+                if ((idp==int_tab)&&(idB==int_tab2)) {
+                    
+                    verif=false;
+
+                 }
+               }
+
+              in.close();
+             }
+
+
+           catch(FileNotFoundException err){
+           //System.out.println( "Erreur :le fichier n’existe pas!\n "+err);
+           }
+
+           catch (IOException err){
+           //System.out.println(" Erreur :\n "+err);
+           }
+        
+        return verif;
+    }
     
-   public static void creation_piece(int idP_plus, int idM_plus)
+   public static void creation_piece(int idP_plus, int idB)
    {
     
    Point p1,p2,p3,p4;
@@ -212,11 +260,12 @@ public class Projet_56 {
    Mur M1, M2, M3, M4;
    Piece P1;
    double a,b;
-   int id_bat;
    String revet;
+   int idM_plus;
    
-   System.out.println(" ajouter a quel batiment ? ");
-   id_bat=Lire.i();
+   idM_plus=1;
+   
+   
        
    System.out.println("entrer deux points diagonals de la pièce :");
    
@@ -244,36 +293,36 @@ public class Projet_56 {
          revet=Lire.S();
    
    M1=new Mur(idM_plus,p1,p2,0,0, revet);
-   memoire_mur(M1, idP_plus, id_bat);
+   memoire_mur(M1, idP_plus, idB);
    idM_plus=idM_plus+1;
    
    System.out.println(" quel revetement  ");
          revet=Lire.S();
    
    M2=new Mur(idM_plus,p2,p3,0,0, revet);
-   memoire_mur(M2, idP_plus, id_bat);
+   memoire_mur(M2, idP_plus, idB);
    idM_plus=idM_plus+1;
 
    System.out.println(" quel revetement  ");
          revet=Lire.S();
          
    M3=new Mur(idM_plus,p3,p4,0,0, revet); 
-   memoire_mur(M3, idP_plus, id_bat);
+   memoire_mur(M3, idP_plus, idB);
    idM_plus=idM_plus+1;
    
    System.out.println(" quel revetement  ");
          revet=Lire.S();
 
    M4=new Mur(idM_plus,p4,p1,0,0, revet); 
-   memoire_mur(M4, idP_plus, id_bat);
-   idM_plus=idM_plus+1;
+   memoire_mur(M4, idP_plus, idB);
+   
 
    P1=new Piece(idP_plus, 0, 0);
    P1.afficher();
   
    
    
-   ecriture("Piece numero : ", P1.idPiece);
+   /*ecriture("Piece numero : ", P1.idPiece);
    prix_mur_ecriture(M1);
    prix_mur_ecriture(M2);
    prix_mur_ecriture(M3);
@@ -281,7 +330,79 @@ public class Projet_56 {
    
    
    ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);ecriture_();
-   ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
+   ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);*/
+   }
+   
+    public static void ecriture_Piece(int idp, int idB){
+
+       String [] tabligne = new String [30];
+       String S_idp;
+       double prix_tot_piece , double_prix; prix_tot_piece=0;
+       int int_tab, int_tab2;
+             
+       double idB_d=idB, idp_d=idp;
+       
+       ecriture("Batiment n°", idB_d);
+       ecriture("Piece n°", idp_d);
+       ecriture_espace(3);
+       
+       try 
+             {
+             
+             BufferedReader in=new BufferedReader(new FileReader("memoire.txt"));
+             S_idp=Double.toString(idp); 
+             String ligne; 
+             
+             
+             while((ligne=in.readLine())!=null) 
+              {
+                
+        
+
+                tabligne = ligne.split(";");
+                /*System.out.println(tabligne[1]);*/             
+                 
+                    
+                int_tab=Integer.parseInt(tabligne[1]);           
+                int_tab2=Integer.parseInt(tabligne[0]); 
+                if ((idp==int_tab)&&(idB==int_tab2)) {
+                    
+                    
+                            try
+                              {
+                            BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+
+                            out.write("Mur " + tabligne[2] + "     cout : " + tabligne[9] + " €");                          
+                            out.newLine();
+                            out.close();
+                            }
+                            catch (IOException err)
+                            {
+                                //System.out.println("Erreur :\n"+err);
+                            }                           
+                       }            
+              
+              }
+
+              in.close();
+             }
+
+
+           catch(FileNotFoundException err){
+           //System.out.println( "Erreur :le fichier n’existe pas!\n "+err);
+           }
+
+           catch (IOException err){
+           //System.out.println(" Erreur :\n "+err);
+           }
+        
+        ecriture_espace(3);
+        ecriture("prix total de la piece : ", total_piece(idp, idB));
+        ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);
+        ecriture_();
+        ecriture_espace(3);
+       
+        
    }
     
    public static void creation_bat(int idB_plus)
@@ -291,39 +412,35 @@ public class Projet_56 {
         B1.afficher();
    }
    
-   public static double total_piece(int idp)
+   public static double total_piece(int idp, int idB)
    {
        
        String [] tabligne = new String [30];
        String S_idp;
        double prix_tot_piece , double_prix; prix_tot_piece=0;
-       int int_tab;
+       int int_tab, int_tab2;
        
         try 
              {
-              BufferedReader in=new BufferedReader(new FileReader("memoire.txt"));
+             BufferedReader in=new BufferedReader(new FileReader("memoire.txt"));
              S_idp=Double.toString(idp); 
              String ligne; 
              while((ligne=in.readLine())!=null) 
               {
                 
-                  
-                  
-                System.out.println(ligne);
+        
 
                 tabligne = ligne.split(";");
-                /*System.out.println(tabligne[1]);*/
-                
-                 System.out.println(idp);
+                /*System.out.println(tabligne[1]);*/             
                  
                     
-                 int_tab=Integer.parseInt(tabligne[1]);
-                 System.out.println(int_tab);
-
-                if (idp==int_tab) {
+                 int_tab=Integer.parseInt(tabligne[1]);           
+                 int_tab2=Integer.parseInt(tabligne[0]);
+                 
+                if ((idp==int_tab)&&(idB==int_tab2)) {
                     double_prix=Double.parseDouble(tabligne[9]);
                     prix_tot_piece=prix_tot_piece+double_prix;
-                    System.out.println(double_prix);
+                    // System.out.println(double_prix);
 
                  }
                }
@@ -333,10 +450,12 @@ public class Projet_56 {
 
 
            catch(FileNotFoundException err){
-           System.out.println( "Erreur :le fichier n’existe pas!\n "+err);}
+           //System.out.println( "Erreur :le fichier n’existe pas!\n "+err);
+           }
 
            catch (IOException err){
-           System.out.println(" Erreur :\n "+err);}
+           //System.out.println(" Erreur :\n "+err);
+           }
          
         return prix_tot_piece;
        
@@ -350,7 +469,7 @@ public class Projet_56 {
         String [] tabligne = new String [30];
         String revet , prixM2  ;
         double surface;
-        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur , idB_plus, idp; 
+        int i , idP_plus , idM_plus , nbpiece , id_memoire , nbBat , choisissateur , idB_plus, idp, idB; 
         idM_plus=1; idP_plus=1; id_memoire=1; choisissateur=10; idB_plus=1 ;
         
         //-------------------
@@ -364,35 +483,94 @@ public class Projet_56 {
         
     while ( choisissateur!=0)
       {
+           System.out.println("");
            System.out.println("Que voulez vous faire ?  ");
-           System.out.println(" creer batiment ");
-           System.out.println(" ajouter piece ");
-           System.out.println(" calcul du prix piece ");
+           System.out.println(" 1 - creer batiment ");
+           System.out.println(" 2 - ajouter piece ");
+           System.out.println(" 3 - calcul du prix piece ");
+           System.out.println(" 4 - ecrire prix piece ");
+           System.out.println("");
            choisissateur=Lire.i();
+           
+          
+            if (choisissateur==1)
+           {
+               
+               
+               creation_bat(idB_plus);
+               idB_plus=idB_plus+1;              
+               
+           } 
+           
            
            if (choisissateur==2)
            {
-               creation_piece(idP_plus, idM_plus);
-               idP_plus=idP_plus+1;
+               System.out.println(" ajouter a quel batiment ? ");
+               idB=Lire.i();
+               System.out.println("");
+               
+               System.out.println("Numero de la piece : ");
+               idP_plus=Lire.i();
+               System.out.println("");
+               
+                if (verification_non_existence(idP_plus, idB)==true)
+                {
+                            creation_piece(idP_plus, idB);
+                }
+                else
+                {
+                                    System.out.println("");
+                                    System.out.println("cette piece existe deja");
+                                    System.out.println("");
+
+                }
+            
+               
                /*id_memoire=i*4+1;*/
                
            }
            
-           if (choisissateur==1)
-           {
-               creation_bat(idB_plus);
-               idB_plus=idB_plus+1;
-               
-               
-           } 
            
            if (choisissateur==3)
            {
              System.out.println("Calcul prix total de la piece : ");
+             System.out.println("Quel bat ? ");
+             idB=Lire.i();
+             System.out.println("");
              System.out.println("Quel piece ? ");
              idp=Lire.i();
+             System.out.println("");
              
-             System.out.println("total de la piece " + total_piece(idp));
+             
+             System.out.println("total de la piece " + total_piece(idp, idB));
+             System.out.println("");
+                         
+           }
+           
+           if (choisissateur==4)
+           {
+             
+              
+                System.out.println("Ecrire le prix de la piece : quel bat? : ");
+                idB=Lire.i();
+                System.out.println("");
+                System.out.println("quel piece? : ");
+                idp=Lire.i();
+                System.out.println("");
+
+                if (verification_non_existence(idP_plus, idB)==false)
+                {
+                             ecriture_Piece(idp, idB);
+                }
+                else
+                {
+                                    System.out.println("");
+                                    System.out.println("cette piece n'existe pas");
+                                    System.out.println("");
+
+                }
+                  
+               
                          
            } 
 
