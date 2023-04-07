@@ -114,7 +114,7 @@ public class Projet_56 {
               {
                 tabligne = in.readLine().split(";");
                 /*System.out.println(tabligne[1]);*/
-                if ((tabligne[1].compareTo(revet) == 0) && (tabligne[2].compareTo("1")==0)){
+                if ((tabligne[1].compareTo(revet) == 0) /*&& (tabligne[2].compareTo("1")==0)*/ ){
                     
                     prixM2=tabligne[5];
                     
@@ -157,8 +157,70 @@ public class Projet_56 {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
           
           S_id_memoire=Double.toString(M.idMur);
-          out.write(id_bat + ";" + idP_plus + ";" + M.idMur + ";" + "    " + ";" + p1.px + ";" 
+          out.write("M;" + id_bat + ";" + idP_plus + ";" + M.idMur + ";" + "    " + ";" + p1.px + ";" 
                   + p1.py + ";" + p2.px + ";" + p2.py + ";" +  "   " + ";" + prix(M.surface(), M.revet) + ";");
+          
+          out.newLine();
+
+          out.close();
+          }
+          catch (IOException err)
+          {
+              //System.out.println("Erreur :\n"+err);
+          }
+        
+    }
+    
+     public static void memoire_sol(Sol S, int id_bat, int idP_plus)
+    {
+        
+        Point p1, p2;
+        
+        
+        
+        p1=S.p1;
+        p2=S.p2;
+        
+         
+        
+        try
+            {
+          BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
+          
+         
+          out.write("S;" + id_bat + ";" + idP_plus + ";" + S.idSol + ";" + "    " + ";" + p1.px + ";" 
+                  + p1.py + ";" + p2.px + ";" + p2.py + ";" +  "   " + ";" + prix(S.surface(), S.revetement) + ";");
+          
+          out.newLine();
+
+          out.close();
+          }
+          catch (IOException err)
+          {
+              //System.out.println("Erreur :\n"+err);
+          }
+        
+    }
+     
+       public static void memoire_pl(Planfond Pl, int id_bat, int idP_plus)
+    {
+        
+        Point p1, p2;
+        
+        
+        
+        p1=Pl.p1;
+        p2=Pl.p2;
+        
+         
+        
+        try
+            {
+          BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
+          
+         
+          out.write("Pl;" + id_bat + ";" + idP_plus + ";" + Pl.idPlanfond + ";" + "    " + ";" + p1.px + ";" 
+                  + p1.py + ";" + p2.px + ";" + p2.py + ";" +  "   " + ";" + prix(Pl.surface(), Pl.revetement) + ";");
           
           out.newLine();
 
@@ -227,8 +289,8 @@ public class Projet_56 {
                 /*System.out.println(tabligne[1]);*/             
                  
                     
-                 int_tab=Integer.parseInt(tabligne[1]);           
-                 int_tab2=Integer.parseInt(tabligne[0]);
+                 int_tab=Integer.parseInt(tabligne[2]);           
+                 int_tab2=Integer.parseInt(tabligne[1]);
                  
                 if ((idp==int_tab)&&(idB==int_tab2)) {
                     
@@ -258,11 +320,13 @@ public class Projet_56 {
    Point p1,p2,p3,p4;
    double diag1x, diag1y, diag2x, diag2y;
    Mur M1, M2, M3, M4;
+   Sol S;
    Piece P1;
    double a,b;
    String revet;
-   int idM_plus;
-   
+   int idM_plus, ids;
+   Planfond Pl;
+   ids=0;
    idM_plus=1;
    
    
@@ -317,6 +381,22 @@ public class Projet_56 {
    memoire_mur(M4, idP_plus, idB);
    
 
+   System.out.println(" quel revetement  ");
+         revet=Lire.S();
+   
+   S=new Sol(ids, revet, p1, p3);
+   memoire_sol(S, idB, idP_plus);
+   
+   System.out.println(" quel revetement  ");
+   revet=Lire.S(); 
+   
+   Pl=new Planfond (ids, revet, p1, p3);
+   memoire_pl(Pl, idB, idP_plus);
+   
+   System.out.println(S.surface());
+   
+   System.out.println(prix(S.surface(), S.revetement));
+           
    P1=new Piece(idP_plus, 0, 0);
    P1.afficher();
   
@@ -363,16 +443,19 @@ public class Projet_56 {
                 /*System.out.println(tabligne[1]);*/             
                  
                     
-                int_tab=Integer.parseInt(tabligne[1]);           
-                int_tab2=Integer.parseInt(tabligne[0]); 
-                if ((idp==int_tab)&&(idB==int_tab2)) {
+                int_tab=Integer.parseInt(tabligne[2]);           
+                int_tab2=Integer.parseInt(tabligne[1]); 
+               
+               
+                
+                if ((idp==int_tab)&&(idB==int_tab2)&&(tabligne[0].compareTo("M")==0)) {
                     
                     
                             try
                               {
                             BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
 
-                            out.write("Mur " + tabligne[2] + "     cout : " + tabligne[9] + " €");                          
+                            out.write("Mur " + tabligne[3] + "     cout : " + tabligne[10] + " €");                          
                             out.newLine();
                             out.close();
                             }
@@ -380,7 +463,41 @@ public class Projet_56 {
                             {
                                 //System.out.println("Erreur :\n"+err);
                             }                           
-                       }            
+                       }   
+               
+                if ((idp==int_tab)&&(idB==int_tab2)&&(tabligne[0].compareTo("S")==0)) {
+                    
+                    
+                            try
+                              {
+                            BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+
+                            out.write("Sol    " + "     cout : " + tabligne[10] + " €");                          
+                            out.newLine();
+                            out.close();
+                            }
+                            catch (IOException err)
+                            {
+                                //System.out.println("Erreur :\n"+err);
+                            }                           
+                       } 
+                
+                if ((idp==int_tab)&&(idB==int_tab2)&&(tabligne[0].compareTo("Pl")==0)) {
+                    
+                    
+                            try
+                              {
+                            BufferedWriter out=new BufferedWriter(new FileWriter("mur.txt",true));
+
+                            out.write("Plafond    " + "     cout : " + tabligne[10] + " €");                          
+                            out.newLine();
+                            out.close();
+                            }
+                            catch (IOException err)
+                            {
+                                //System.out.println("Erreur :\n"+err);
+                            }                           
+                       }
               
               }
 
@@ -434,11 +551,11 @@ public class Projet_56 {
                 /*System.out.println(tabligne[1]);*/             
                  
                     
-                 int_tab=Integer.parseInt(tabligne[1]);           
-                 int_tab2=Integer.parseInt(tabligne[0]);
+                 int_tab=Integer.parseInt(tabligne[2]);           
+                 int_tab2=Integer.parseInt(tabligne[1]);
                  
                 if ((idp==int_tab)&&(idB==int_tab2)) {
-                    double_prix=Double.parseDouble(tabligne[9]);
+                    double_prix=Double.parseDouble(tabligne[10]);
                     prix_tot_piece=prix_tot_piece+double_prix;
                     // System.out.println(double_prix);
 
