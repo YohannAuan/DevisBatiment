@@ -10,17 +10,33 @@ import java.util.ArrayList;
  */
 public class Planfond {
     int idPlanfond ;
+    Point p1, p2;
+    String revetement;
     ArrayList <Point> listePoints = new ArrayList<Point>() ;
     ArrayList <Revetement> listeRevetements = new ArrayList<Revetement>() ;
 
-    Planfond(int id) {
+    Planfond(int id, String revet, Point p1, Point p2) {
         this.idPlanfond = id ;
+        this.revetement=revet;
+        this.p1=p1;
+        this.p2=p2;
     }
     
     void afficher() {
         System.out.println("Piece : idSol : "+this.idPlanfond) ;
     }
-/*  Méthodes :
+
+     double surface()
+    {
+        
+        return Math.sqrt(Math.pow((-(this.p1.py)+(this.p2.py))*(-(this.p1.px)+(this.p2.px)),2));
+
+    }
+    
+    
+    /*  Méthodes :
+    
+    
     toString()
     surface()
 */
