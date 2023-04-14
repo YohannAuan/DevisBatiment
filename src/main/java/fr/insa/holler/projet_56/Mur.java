@@ -16,15 +16,17 @@ public class Mur {
     //Attributs
     int idMur,NbrePortes,NbreFenetres;
     Point fin,debut;
+    String revet;
     
     
     
-    Mur(int id,Point p1,Point p2,int p,int f){
+    Mur(int id,Point p1,Point p2,int p,int f, String r){
     this.idMur=id;
     this.debut=p1;
     this.fin=p2;
     this.NbrePortes=p;
     this.NbreFenetres=f;
+    this.revet=r;
     ArrayList <Revetement> listeRevetements;
     listeRevetements = new ArrayList <Revetement> ();
     }
@@ -47,4 +49,6 @@ public class Mur {
     return longueur()*2.7-(this.NbreFenetres*1.8)-(this.NbrePortes*3);  /* h=2.7 */
         
     }
+    
+    
 }
