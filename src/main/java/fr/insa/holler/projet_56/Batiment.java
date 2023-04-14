@@ -27,7 +27,7 @@ public class Batiment {
     void afficher (){
         System.out.println("-_-_-_-_Batiment-_-_-_-_-_");
         System.out.println("-_-_-_-_  " + this.idBatiment + "  _-_-_-_-_-_-_");
-        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_");
+        System.out.println("");
     }
     
 }
