@@ -115,7 +115,7 @@ public class Projet_56 {
               
              /* while((ligne=in.readLine())!=null) */
                  
-             for ( i=0 ; i<=18 ; i++)
+             for ( i=0 ; i<=19 ; i++)
               {
                 tabligne = in.readLine().split(";");
                 /*System.out.println(tabligne[1]);*/
