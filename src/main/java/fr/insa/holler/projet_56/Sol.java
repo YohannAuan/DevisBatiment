@@ -30,7 +30,7 @@ public class Sol {
     double surface()
     {
         
-        return Math.sqrt(-(this.p1.py)*(this.p1.py)+(this.p2.py)*(this.p2.py))*Math.sqrt(-(this.p1.px)*(this.p1.px)+(this.p2.px)*(this.p2.px));
+        return Math.sqrt(Math.pow((-(this.p1.py)+(this.p2.py))*(-(this.p1.px)+(this.p2.px)),2));
     }
     
 /*  Méthodes :
