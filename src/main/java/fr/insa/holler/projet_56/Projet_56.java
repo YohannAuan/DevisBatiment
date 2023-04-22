@@ -303,7 +303,8 @@ public class Projet_56 {
              while((ligne=in.readLine())!=null) 
               {
                 
-        
+                
+
 
                 tabligne = ligne.split(";");
                 /*System.out.println(tabligne[1]);*/             
@@ -311,6 +312,8 @@ public class Projet_56 {
                     
                  int_tab=Integer.parseInt(tabligne[2]);           
                  int_tab2=Integer.parseInt(tabligne[1]);
+                 
+                 System.out.println(int_tab +"  "+ int_tab2);
                  
                 if ((idp==int_tab)&&(idB==int_tab2)) {
                     
@@ -337,11 +340,12 @@ public class Projet_56 {
   
     // creation d'une piece avec deux point et les revetement ( creation mur sol et planfond )  //
     
-    public static void creation_piece(int idP_plus, int idB)
+    public static void creation_piece(double diag1x, double diag1y, double diag2x,double diag2y, 
+            String R1, String R2, String R3, String R4, String RS, String RP, int Bat, int Piece)
    {
     
    Point p1,p2,p3,p4;
-   double diag1x, diag1y, diag2x, diag2y;
+   
    Mur M1, M2, M3, M4;
    Sol S;
    Piece P1;
@@ -352,88 +356,92 @@ public class Projet_56 {
    ids=0;
    idM_plus=1;
    
-   
-       
-   System.out.println("entrer deux points diagonals de la pièce :");
-   
-   diag1x=Lire.d();
-   diag1y=Lire.d();
-   diag2x=Lire.d();
-   diag2y=Lire.d();
-   
-   p1=new Point(1,diag1x,diag1y);
-   p3=new Point(3,diag2x,diag2y);
-   p2=new Point(2,diag1x,diag2y);
-   p4=new Point(4,diag2x,diag1y);
-   p1.afficher();
-   p2.afficher();
-   p3.afficher();
-   p4.afficher();
+   int idP_plus; 
+   int idB;
    
    
-   /*p1=new Point(1,10.75,25.1);
-   p2=new Point(2,10,25);
-   p1.afficher();
-   p2.afficher();*/
-   
-   System.out.println(" quel revetement  ");
-         revet=Lire.S();
-   
-   M1=new Mur(idM_plus,p1,p2,0,0, revet);
-   memoire_mur(M1, idP_plus, idB);
-   idM_plus=idM_plus+1;
-   
-   System.out.println(" quel revetement  ");
-         revet=Lire.S();
-   
-   M2=new Mur(idM_plus,p2,p3,0,0, revet);
-   memoire_mur(M2, idP_plus, idB);
-   idM_plus=idM_plus+1;
-
-   System.out.println(" quel revetement  ");
-         revet=Lire.S();
-         
-   M3=new Mur(idM_plus,p3,p4,0,0, revet); 
-   memoire_mur(M3, idP_plus, idB);
-   idM_plus=idM_plus+1;
-   
-   System.out.println(" quel revetement  ");
-         revet=Lire.S();
-
-   M4=new Mur(idM_plus,p4,p1,0,0, revet); 
-   memoire_mur(M4, idP_plus, idB);
-   
-
-   System.out.println(" quel revetement  ");
-         revet=Lire.S();
-   
-   S=new Sol(ids, revet, p1, p3);
-   memoire_sol(S, idB, idP_plus);
-   
-   System.out.println(" quel revetement  ");
-   revet=Lire.S(); 
-   
-   Pl=new Planfond (ids, revet, p1, p3);
-   memoire_pl(Pl, idB, idP_plus);
-   
-   System.out.println(S.surface());
-   
-   System.out.println(prix(S.surface(), S.revetement));
-           
-   P1=new Piece(idP_plus, 0, 0);
-   P1.afficher();
   
-   
-   
-   /*ecriture("Piece numero : ", P1.idPiece);
-   prix_mur_ecriture(M1);
-   prix_mur_ecriture(M2);
-   prix_mur_ecriture(M3);
-   prix_mur_ecriture(M4);
-   
-   
-   ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);ecriture_();
-   ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);*/
+               
+                if (verification_non_existence(Piece, Bat)==true)
+                {
+                    
+                    
+       
+
+                    p1=new Point(1,diag1x,diag1y);
+                    p3=new Point(3,diag2x,diag2y);
+                    p2=new Point(2,diag1x,diag2y);
+                    p4=new Point(4,diag2x,diag1y);
+                    p1.afficher();
+                    p2.afficher();
+                    p3.afficher();
+                    p4.afficher();
+
+
+                    /*p1=new Point(1,10.75,25.1);
+                    p2=new Point(2,10,25);
+                    p1.afficher();
+                    p2.afficher();*/
+
+                    
+
+                    M1=new Mur(idM_plus,p1,p2,0,0, R1);
+                    memoire_mur(M1, Piece, Bat);
+                    idM_plus=idM_plus+1;
+
+                    
+
+                    M2=new Mur(idM_plus,p2,p3,0,0, R2);
+                    memoire_mur(M2, Piece, Bat);
+                    idM_plus=idM_plus+1;
+
+
+                    M3=new Mur(idM_plus,p3,p4,0,0, R3); 
+                    memoire_mur(M3, Piece, Bat);
+                    idM_plus=idM_plus+1;
+
+
+                    M4=new Mur(idM_plus,p4,p1,0,0, R4); 
+                    memoire_mur(M4, Piece, Bat);
+
+
+
+                    S=new Sol(ids, RS, p1, p3);
+                    memoire_sol(S, Bat, Piece);
+                    
+
+                    Pl=new Planfond (ids, RP, p1, p3);
+                    memoire_pl(Pl, Bat, Piece);
+
+                    System.out.println(S.surface());
+
+                    System.out.println(prix(S.surface(), S.revetement));
+
+                    P1=new Piece(Piece, 0, 0);
+                    P1.afficher();
+
+
+
+                    /*ecriture("Piece numero : ", P1.idPiece);
+                    prix_mur_ecriture(M1);
+                    prix_mur_ecriture(M2);
+                    prix_mur_ecriture(M3);
+                    prix_mur_ecriture(M4);
+
+
+                    ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);ecriture_();
+                    ecriture_espace(3);ecriture_espace(3);ecriture_espace(3);*/
+                    }
+                
+        else
+        {
+                            System.out.println("");
+                            System.out.println("cette piece existe deja");
+                            System.out.println("");
+
+        }
+                
+                
    }
    
     public static void ecriture_Piece(int idp, int idB){
@@ -747,28 +755,9 @@ public class Projet_56 {
            
            if (choisissateur==2)
            {
-               System.out.println(" ajouter a quel batiment ? ");
-               idB=Lire.i();
-               System.out.println("");
                
-               System.out.println("Numero de la piece : ");
-               idP_plus=Lire.i();
-               System.out.println("");
-               
-                if (verification_non_existence(idP_plus, idB)==true)
-                {
-                            creation_piece(idP_plus, idB);
-                }
-                else
-                {
-                                    System.out.println("");
-                                    System.out.println("cette piece existe deja");
-                                    System.out.println("");
-
-                }
-            
-               
-               /*id_memoire=i*4+1;*/
+                           // creation_piece();
+             
                
            }
            
