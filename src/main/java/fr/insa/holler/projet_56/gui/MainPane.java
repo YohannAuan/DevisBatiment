@@ -199,6 +199,9 @@ public MainPane() {
                 int_tab2=Integer.parseInt(tabligne[1]);
                                   
                 if ((tabligne[0].compareTo("S")==0)) {
+                    
+                    
+                    
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("toutes les pieces");
                     alert.setHeaderText(null);
