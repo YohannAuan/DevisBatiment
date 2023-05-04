@@ -49,6 +49,54 @@ public class Mur {
     return longueur()*2.7-(this.NbreFenetres*1.8)-(this.NbrePortes*3);  /* h=2.7 */
         
     }
+
+    public int getIdMur() {
+        return idMur;
+    }
+
+    public void setIdMur(int idMur) {
+        this.idMur = idMur;
+    }
+
+    public int getNbrePortes() {
+        return NbrePortes;
+    }
+
+    public void setNbrePortes(int NbrePortes) {
+        this.NbrePortes = NbrePortes;
+    }
+
+    public int getNbreFenetres() {
+        return NbreFenetres;
+    }
+
+    public void setNbreFenetres(int NbreFenetres) {
+        this.NbreFenetres = NbreFenetres;
+    }
+
+    public Point getFin() {
+        return fin;
+    }
+
+    public void setFin(Point fin) {
+        this.fin = fin;
+    }
+
+    public Point getDebut() {
+        return debut;
+    }
+
+    public void setDebut(Point debut) {
+        this.debut = debut;
+    }
+
+    public String getRevet() {
+        return revet;
+    }
+
+    public void setRevet(String revet) {
+        this.revet = revet;
+    }
     
     
 }
