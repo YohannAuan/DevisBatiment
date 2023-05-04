@@ -241,12 +241,12 @@ public MainPane() {
         Label Py = new Label("py :");
 
         this.fiPx1 = new TextField("1");
-        this.fiPx1.setOnMouseClicked((t) -> {
+            this.fiPx1.setOnMouseClicked((t) -> {
             
             double w = (Double.parseDouble(this.fiPx2.getText())-Double.parseDouble(this.fiPx1.getText()));
             double h = (Double.parseDouble(this.fiPy2.getText())-Double.parseDouble(this.fiPy1.getText()));
             
-           // this.cDessin = new DessinCanvas(w,h);
+          //  this.cDessin = new DessinCanvas(w,h);
            this.setCenter(cDessin);
            
                          
