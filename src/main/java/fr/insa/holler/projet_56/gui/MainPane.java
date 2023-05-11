@@ -120,9 +120,9 @@ public MainPane() {
     
        this.rCreation2 = new Button("Creation test fenetre");
        this.rCreation2.setOnAction((t) -> {
-           
-          entrerP.demandePoint();
-           
+  
+            entrerP.demandePoint();
+
        });
         
     
