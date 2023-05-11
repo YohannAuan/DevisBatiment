@@ -89,15 +89,15 @@ public class MainPane extends BorderPane {
  
     }
     
-    private MainBar menu;
+    public MainBar menu;
     
-    private Button rCreation, rDessin, rCalcul, rPiece, rCalcul2, rCreation2;
-    private Label lDevis, lEspace, lCalcul, lCreation;
+    public Button rCreation, rDessin, rCalcul, rPiece, rCalcul2, rCreation2;
+    public Label lDevis, lEspace, lCalcul, lCreation;
     
-    private TextField fiPx1, fiPy1,fiPx2, fiPy2, rNumPiece,
+    public TextField fiPx1, fiPy1,fiPx2, fiPy2, rNumPiece,
             rRevet1, rRevet2, rRevet3, rRevet4, rRevetS, rRevetP, fiBat, fiPiece;
     
-    private DessinCanvas cDessin;
+    public DessinCanvas cDessin;
     
     //private DessinPane dessin;
     
