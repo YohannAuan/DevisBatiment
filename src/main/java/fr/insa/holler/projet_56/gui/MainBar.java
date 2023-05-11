@@ -22,8 +22,8 @@ import javafx.scene.paint.Color;
  */
 public class MainBar extends MenuBar{
     
-    private MainPane main;
-    private TextField fiPx1, fiPy1,  fiPx2,  fiPy2,  fiBat
+    public MainPane main;
+    public TextField fiPx1, fiPy1,  fiPx2,  fiPy2,  fiBat
              ,  fiPiece,  rRevet1,  rRevet2,  rRevet3,  rRevet4,
               rRevetS,  rRevetP;
     
@@ -33,7 +33,7 @@ public class MainBar extends MenuBar{
         MenuItem test1 = new MenuItem("Nouveau");
         test1.setOnAction((t) -> {
             
-       String a = fiPx1.getText();
+       String a = fiPx2.getText();
        System.out.println(a);
             
         //creap( fiPx1,  fiPy1,  fiPx2,  fiPy2,  fiBat

@@ -25,12 +25,12 @@ public class DessinCanvas extends Pane {
 
         this.realCanvas.heightProperty().bind(this.heightProperty());
         this.realCanvas.heightProperty().addListener((o) -> {
-            this.redrawAll(Color.MEDIUMSPRINGGREEN);
+            this.redrawAll(Color.CORAL);
         });
         
         this.realCanvas.widthProperty().bind(this.widthProperty());
         this.realCanvas.widthProperty().addListener((o) -> {
-            this.redrawAll(Color.BLUE);
+            this.redrawAll(Color.SADDLEBROWN);
         });
         
     }
