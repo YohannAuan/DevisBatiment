@@ -46,7 +46,7 @@ public class Mur {
     /* System.out.println("Quelle est la hauteur ? ");
     h=Lire.d(); */
         
-    return longueur()*2.7-(this.NbreFenetres*1.8)-(this.NbrePortes*3);  /* h=2.7 */
+    return longueur()*2.7-(this.NbreFenetres*1.8)-(this.NbrePortes*2);  /* h=2.7 */
         
     }
 
