@@ -46,9 +46,50 @@ import javafx.stage.Window;
 public class MainPane extends BorderPane {
 
 
+     public static void creap(TextField fiPx1, TextField fiPy1, TextField fiPx2, TextField fiPy2, TextField fiBat
+             , TextField fiPiece, TextField rRevet1, TextField rRevet2, TextField rRevet3, TextField rRevet4,
+             TextField rRevetS, TextField rRevetP) 
+    {
+             int i;
+            
+            double diag1x=Double.parseDouble(fiPx1.getText());
+            double diag1y=Double.parseDouble(fiPy1.getText());
+            double diag2x=Double.parseDouble(fiPx2.getText());
+            double diag2y=Double.parseDouble(fiPy2.getText());
+            int Bat=Integer.parseInt(fiBat.getText());
+            int Piece=Integer.parseInt(fiPiece.getText());
+            String R1=rRevet1.getText();
+             String R2=rRevet2.getText();
+            String R3=rRevet3.getText();
+            String R4=rRevet4.getText();
+            String RS=rRevetS.getText();
+            String RP=rRevetP.getText();
+            
+            
+            /*if (verification_non_existence(Piece, Bat)==true){
+                System.out.println("non"+ Piece + Bat);
+                i=i+1;
+            }
+            else{
+                System.out.println("oui" + Piece + Bat);
+                
+            }
+            
+              */          
+            creation_piece(diag1x, diag1y, diag2x, diag2y, R1, R2, R3, R4, RS, RP, Bat, Piece);  
+            
+            //rPiece = new Button("Piece "+ i);
+           
+            
+            //GridPane grid2 = new GridPane();
+            //grid2.add(rPiece, 1, 0);
+            //this.setTop(grid2);
+            
+            
+ 
+    }
     
-    
-    
+    private MainBar menu;
     
     private Button rCreation, rDessin, rCalcul, rPiece, rCalcul2, rCreation2;
     private Label lDevis, lEspace, lCalcul, lCreation;
@@ -73,6 +114,10 @@ public class MainPane extends BorderPane {
     
 public MainPane() {           
     
+        this.menu = new MainBar(this);
+        this.setTop(this.menu);
+    
+    
        this.rCreation2 = new Button("Creation test fenetre");
        this.rCreation2.setOnAction((t) -> {
            
@@ -85,42 +130,9 @@ public MainPane() {
         this.rCreation.setOnAction((t) -> {
                             
             
-            
-            diag1x=Double.parseDouble(this.fiPx1.getText());
-            diag1y=Double.parseDouble(this.fiPy1.getText());
-            diag2x=Double.parseDouble(this.fiPx2.getText());
-            diag2y=Double.parseDouble(this.fiPy2.getText());
-            Bat=Integer.parseInt(this.fiBat.getText());
-            Piece=Integer.parseInt(this.fiPiece.getText());
-            R1=this.rRevet1.getText();
-            R2=this.rRevet2.getText();
-            R3=this.rRevet3.getText();
-            R4=this.rRevet4.getText();
-            RS=this.rRevetS.getText();
-            RP=this.rRevetP.getText();
-            
-            
-            if (verification_non_existence(Piece, Bat)==true){
-                System.out.println("non"+ Piece + Bat);
-                i=i+1;
-            }
-            else{
-                System.out.println("oui" + Piece + Bat);
-                
-            }
-            
-                        
-            creation_piece(diag1x, diag1y, diag2x, diag2y, R1, R2, R3, R4, RS, RP, Bat, Piece);  
-            
-            this.rPiece = new Button("Piece "+ i);
-           
-            
-            GridPane grid2 = new GridPane();
-            grid2.add(rPiece, 1, 0);
-            this.setTop(grid2);
-            
-            
-
+           creap( fiPx1,  fiPy1,  fiPx2,  fiPy2,  fiBat
+             ,  fiPiece,  rRevet1,  rRevet2,  rRevet3,  rRevet4,
+              rRevetS,  rRevetP);
             
         });       
         
