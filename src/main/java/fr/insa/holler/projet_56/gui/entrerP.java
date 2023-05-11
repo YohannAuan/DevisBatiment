@@ -7,6 +7,7 @@ package fr.insa.holler.projet_56.gui;
 
 import fr.insa.holler.projet_56.Point;
 import java.util.Optional;
+import javafx.scene.Scene;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ColorPicker;
@@ -62,6 +63,7 @@ public class entrerP extends Dialog<Point> {
 
     public static Optional<Point> demandePoint() {
         entrerP dialog = new entrerP();
+        dialog.setTitle("test fenetre");
         return dialog.showAndWait();
     }
 
