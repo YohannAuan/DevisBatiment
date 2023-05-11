@@ -163,11 +163,11 @@ public class Projet_56 {
         try
             {
           BufferedWriter out=new BufferedWriter(new FileWriter("memoire.txt",true));
-          
+          M.NbrePortes=30;
           S_id_memoire=Double.toString(M.idMur);
           out.write("M;" + id_bat + ";" + idP_plus + ";" + M.idMur + ";" + "    " + ";" + p1.px + ";" 
                   + p1.py + ";" + p2.px + ";" + p2.py + ";" +  "   " + ";" + prix(M.surface(), M.revet)
-                  + ";" + M.revet + ";" + M.surface());
+                  + ";" + M.revet + ";" + M.surface() + ";" + M.NbrePortes + ";" + M.NbreFenetres );
           
           out.newLine();
 
@@ -199,7 +199,7 @@ public class Projet_56 {
          
           out.write("S;" + id_bat + ";" + idP_plus + ";" + S.idSol + ";" + "    " + ";" + p1.px + ";" 
                   + p1.py + ";" + p2.px + ";" + p2.py + ";" +  "   " + ";" + prix(S.surface(), S.revetement)
-                  + ";"  + S.revetement + ";" + S.surface());
+                  + ";"  + S.revetement + ";" + S.surface() + ";" + "0" + ";" + "0");
           
           out.newLine();
 
