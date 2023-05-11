@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fr.insa.holler.projet_56.gui;
+import fr.insa.holler.projet_56.gui.MainPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -24,12 +25,12 @@ public class DessinCanvas extends Pane {
 
         this.realCanvas.heightProperty().bind(this.heightProperty());
         this.realCanvas.heightProperty().addListener((o) -> {
-            this.redrawAll();
+            this.redrawAll(Color.MEDIUMSPRINGGREEN);
         });
         
         this.realCanvas.widthProperty().bind(this.widthProperty());
         this.realCanvas.widthProperty().addListener((o) -> {
-            this.redrawAll();
+            this.redrawAll(Color.BLUE);
         });
         
     }
@@ -40,10 +41,10 @@ public class DessinCanvas extends Pane {
         context.fillRect(0, 0, this.getWidth(), this.getHeight());
         this.redrawAll();
     }*/
-    public void redrawAll() {
+    public void redrawAll(Color couleur) {
     
     GraphicsContext context = this.realCanvas.getGraphicsContext2D();
-    context.setFill(Color.LIGHTSLATEGREY);
+    context.setFill(couleur);
     context.fillRect(0, 0, this.getWidth(), this.getHeight());
     
     
