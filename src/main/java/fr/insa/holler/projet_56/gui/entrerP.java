@@ -8,6 +8,7 @@ package fr.insa.holler.projet_56.gui;
 import fr.insa.holler.projet_56.Point;
 import java.util.Optional;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ColorPicker;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * Creation d'un Dialog pour permettre à l'utilisateur d'entrer les coordonnées
@@ -64,7 +66,16 @@ public class entrerP extends Dialog<Point> {
     public static Optional<Point> demandePoint() {
         entrerP dialog = new entrerP();
         dialog.setTitle("test fenetre");
+        dialog.resizableProperty();
+        Button rSupp = new Button("Fermer");
+           rSupp.setOnAction(e->{
+               Stage stage = (Stage)
+                       rSupp.getScene().getWindow();
+               stage.close();
+           });
         return dialog.showAndWait();
+        
+        
     }
 
 }
