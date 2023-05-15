@@ -91,7 +91,7 @@ public class MainPane extends BorderPane {
     
     public MainBar menu;
     
-    public Button rCreation, rDessin, rCalcul, rPiece, rCalcul2, rCreation2;
+    public Button rCreation, rDessin, rCalcul, rPiece, rCalcul2, rCreation2, rSupp;
     public Label lDevis, lEspace, lCalcul, lCreation;
     
     public TextField fiPx1, fiPy1,fiPx2, fiPy2, rNumPiece,
@@ -120,9 +120,16 @@ public MainPane() {
     
        this.rCreation2 = new Button("Creation test fenetre");
        this.rCreation2.setOnAction((t) -> {
-  
-            entrerP.demandePoint();
-
+        
+           entrerP.demandePoint();
+           Alert nouv = new Alert(Alert.AlertType.NONE);
+           nouv.setTitle("test");
+           nouv.showAndWait();
+           
+            
+        
+               
+           
        });
         
     
